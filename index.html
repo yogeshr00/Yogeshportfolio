@@ -2750,13 +2750,13 @@ body{
     <button type="button" class="side-close" id="sideClose" aria-label="Close menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
   </div>
   <nav class="side-links" aria-label="Sections">
-      <a href="#top"><span class="side-num">01</span><span class="side-label">Home</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
-      <a href="#about"><span class="side-num">02</span><span class="side-label">About</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
-      <a href="#skills"><span class="side-num">03</span><span class="side-label">Skills</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
-      <a href="#projects"><span class="side-num">04</span><span class="side-label">Projects</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
-      <a href="#experience"><span class="side-num">05</span><span class="side-label">Experience</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
-      <a href="#education"><span class="side-num">06</span><span class="side-label">Education</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
-      <a href="#contact"><span class="side-num">07</span><span class="side-label">Contact</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+      <a href="#top"><span class="side-label">Home</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+      <a href="#about"><span class="side-label">About</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+      <a href="#skills"><span class="side-label">Skills</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+      <a href="#projects"><span class="side-label">Projects</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+      <a href="#experience"><span class="side-label">Experience</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+      <a href="#education"><span class="side-label">Education</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+      <a href="#contact"><span class="side-label">Contact</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
   </nav>
   <div class="side-foot">
     <a class="side-cta" href="#projects">View My Work</a>
@@ -2818,7 +2818,7 @@ body{overflow-x:clip;}
 .projects .proj-card.is-soon .proj-thumb .play{opacity:.45;}
 .projects .proj-card.is-soon .proj-link{opacity:.65;cursor:default;pointer-events:none;}
 
-/* ---- Mobile navigation: slim header + slide-in side menu ---- */
+/* ---- Mobile navigation: slim header + liquid-glass side menu ---- */
 .side-menu,.side-backdrop{display:none;}
 @media(max-width:720px){
   .nav{width:calc(100% - 24px) !important;top:12px !important;border-radius:18px !important;background:rgba(14,17,24,.88) !important;}
@@ -2829,36 +2829,84 @@ body{overflow-x:clip;}
   .nav-toggle svg{width:24px;height:24px;}
   .hero{padding-top:104px !important;}
 
-  .side-backdrop{display:block;position:fixed;inset:0;z-index:2000;background:rgba(3,6,12,.62);opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease;-webkit-tap-highlight-color:transparent;}
+  .side-backdrop{
+    display:block;position:fixed;inset:0;z-index:2000;background:rgba(4,7,14,.38);
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+    opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;-webkit-tap-highlight-color:transparent;
+  }
+
+  /* the panel: floating, rounded, frosted glass */
   .side-menu{
-    display:flex;flex-direction:column;position:fixed;top:0;right:0;bottom:0;z-index:2100;
-    width:min(86vw,340px);padding:20px 20px 24px;overflow-y:auto;overscroll-behavior:contain;
-    background:#0c1017;border-left:1px solid rgba(255,255,255,.12);box-shadow:-30px 0 80px rgba(0,0,0,.55);
-    transform:translateX(102%);visibility:hidden;transition:transform .38s cubic-bezier(.2,.8,.2,1),visibility .38s;
+    display:flex;flex-direction:column;position:fixed;z-index:2100;top:12px;right:12px;bottom:12px;
+    width:min(84vw,330px);padding:18px 16px 20px;overflow-y:auto;overscroll-behavior:contain;
+    border-radius:32px;isolation:isolate;
+    background:
+      radial-gradient(120% 60% at 0% 0%,rgba(255,255,255,.22),rgba(255,255,255,0) 55%),
+      linear-gradient(150deg,rgba(255,255,255,.15),rgba(255,255,255,.05) 55%,rgba(255,255,255,.09)),
+      rgba(16,20,30,.34);
+    -webkit-backdrop-filter:blur(30px) saturate(190%) brightness(1.06);
+    backdrop-filter:blur(30px) saturate(190%) brightness(1.06);
+    border:1px solid rgba(255,255,255,.26);
+    box-shadow:
+      0 30px 80px rgba(0,0,0,.5),
+      inset 0 1.5px 0 rgba(255,255,255,.5),
+      inset 0 -1px 0 rgba(255,255,255,.1),
+      inset 1px 0 0 rgba(255,255,255,.16),
+      inset 0 0 40px rgba(255,255,255,.04);
+    transform:translateX(112%);visibility:hidden;
+    transition:transform .45s cubic-bezier(.2,.9,.25,1),visibility .45s;
+  }
+  @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+    .side-menu{background:rgba(18,22,32,.94);}
   }
   body.menu-open{overflow:hidden;}
   body.menu-open .side-backdrop{opacity:1;visibility:visible;}
   body.menu-open .side-menu{transform:none;visibility:visible;}
 
-  .side-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;}
-  .side-brand{font-family:var(--font-display);font-weight:800;font-size:20px;letter-spacing:-.01em;color:#fff;}
+  .side-head{display:flex;align-items:center;justify-content:space-between;margin:2px 4px 18px 8px;}
+  .side-brand{font-family:var(--font-display);font-weight:800;font-size:20px;letter-spacing:-.01em;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.25);}
   .side-brand span{color:#f2b544;}
-  .side-close{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);color:#fff;cursor:pointer;}
-  .side-close svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;}
+  .side-close{
+    width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:50%;cursor:pointer;color:#fff;
+    background:linear-gradient(145deg,rgba(255,255,255,.24),rgba(255,255,255,.08));
+    border:1px solid rgba(255,255,255,.28);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 6px 18px rgba(0,0,0,.25);
+  }
+  .side-close svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;}
 
-  .side-links{display:flex;flex-direction:column;gap:4px;}
-  .side-links a{display:flex;align-items:center;gap:16px;padding:15px 14px;border-radius:14px;color:rgba(255,255,255,.82);font-size:18px;font-weight:500;border:1px solid transparent;}
-  .side-links a:active{background:rgba(255,255,255,.06);}
-  .side-num{font-family:var(--font-mono);font-size:12px;color:rgba(242,181,68,.75);min-width:20px;}
+  .side-links{display:flex;flex-direction:column;gap:8px;}
+  .side-links a{
+    display:flex;align-items:center;gap:14px;padding:15px 18px;border-radius:20px;
+    color:rgba(255,255,255,.92);font-size:17.5px;font-weight:500;text-shadow:0 1px 6px rgba(0,0,0,.28);
+    background:linear-gradient(145deg,rgba(255,255,255,.11),rgba(255,255,255,.035));
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.18);
+    transition:background .25s ease,border-color .25s ease,transform .25s ease;
+  }
+  .side-links a:active{transform:scale(.985);background:linear-gradient(145deg,rgba(255,255,255,.2),rgba(255,255,255,.07));}
   .side-label{flex:1;}
-  .side-links svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;opacity:.45;}
-  .side-links a.is-active{color:#fff;background:rgba(242,181,68,.12);border-color:rgba(242,181,68,.35);}
-  .side-links a.is-active .side-num,.side-links a.is-active svg{color:#f2b544;opacity:1;}
+  .side-links svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;opacity:.55;}
+  .side-links a.is-active{
+    color:#fff;
+    background:linear-gradient(145deg,rgba(242,181,68,.34),rgba(242,181,68,.12));
+    border-color:rgba(255,205,110,.5);
+    box-shadow:inset 0 1.5px 0 rgba(255,236,190,.55),0 8px 24px rgba(242,181,68,.16);
+  }
+  .side-links a.is-active svg{color:#ffd166;opacity:1;}
 
-  .side-foot{margin-top:auto;padding-top:24px;}
-  .side-cta{display:flex;align-items:center;justify-content:center;height:52px;border-radius:999px;font-weight:600;font-size:16px;color:#1a1204;background:linear-gradient(135deg,#ffd166,#f2b544);box-shadow:0 10px 28px rgba(242,181,68,.25);}
-  .side-social{display:flex;justify-content:center;gap:22px;margin-top:20px;font-family:var(--font-mono);font-size:13px;}
-  .side-social a{color:rgba(255,255,255,.62);}
+  .side-foot{margin-top:auto;padding-top:22px;}
+  .side-cta{
+    display:flex;align-items:center;justify-content:center;height:54px;border-radius:999px;font-weight:600;font-size:16px;color:#1a1204;
+    background:linear-gradient(180deg,rgba(255,224,150,.98),rgba(242,181,68,.96));
+    border:1px solid rgba(255,240,200,.7);
+    box-shadow:inset 0 1.5px 0 rgba(255,255,255,.7),0 12px 30px rgba(242,181,68,.32);
+  }
+  .side-social{display:flex;justify-content:center;gap:8px;margin-top:14px;}
+  .side-social a{
+    padding:9px 14px;border-radius:999px;font-family:var(--font-mono);font-size:12.5px;color:rgba(255,255,255,.85);
+    background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.04));
+    border:1px solid rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.16);
+  }
 }
 
 /* ---- consistent heading leading ---- */
